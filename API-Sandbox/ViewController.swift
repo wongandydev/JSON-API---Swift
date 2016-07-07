@@ -38,8 +38,13 @@ class ViewController: UIViewController {
                     
                     // Do what you need to with JSON here!
                     // The rest is all boiler plate code you'll use for API requests
+                    let randomCount = Int(arc4random_uniform(UInt32(json["feed"]["entry"].count)))
+                    let randomNumber = json["feed"]["entry"][randomCount]
+                    let movies = Movie(json: randomNumber)
                     
+                    self.loadPoster(movies.property)
                     
+                    self.viewOniTunesPressed(movies.property)
                 }
             case .Failure(let error):
                 print(error)

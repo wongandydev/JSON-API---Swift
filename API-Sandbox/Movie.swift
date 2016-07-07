@@ -15,6 +15,7 @@ struct Movie {
     let price: Double
     let link: String
     let releaseDate: String
+    let property: String
     
     init(json: JSON) {
         self.name = json["im:name"]["label"].stringValue
@@ -22,6 +23,7 @@ struct Movie {
         self.price = json["im:price"]["attributes"]["amount"].doubleValue
         self.link = json["link"][0]["attributes"]["href"].stringValue
         self.releaseDate = json["im:releaseDate"]["attributes"]["label"].stringValue
+        self.property = json["im:image"]["label"].stringValue
     }
     
     
