@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
+    var randomLink: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,9 +45,9 @@ class ViewController: UIViewController {
                     let movies = Movie(json: randomNumber)
                     
                     self.loadPoster(movies.property)
+                    self.randomLink = movies.link
                     
-                    self.viewOniTunesPressed(movies.property)
-                }
+                                    }
             case .Failure(let error):
                 print(error)
             }
@@ -63,7 +65,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func viewOniTunesPressed(sender: AnyObject) {
-        
+        UIApplication.sharedApplication().openURL(NSURL(string: randomLink)!)
     }
     
 }
